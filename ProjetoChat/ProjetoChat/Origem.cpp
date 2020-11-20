@@ -8,7 +8,7 @@ int main() {
 	game.atualizar();
 	game.finalizar();
 	
-	
+	system("pause");
 	return 0;
 }
 

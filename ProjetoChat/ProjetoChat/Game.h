@@ -4,6 +4,7 @@
 #include <SFML/Network.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include"Janela.h"
 class Game
 {
 public:
@@ -25,5 +26,13 @@ private:
 	bool done;
 
 	std::string textAcao;
+
+	//grafico
+	Janela janela;
+	unsigned int jAltura;
+	unsigned int jLargura;
+	std::string jTitulo;
+
+	Sprite sprite;
 };
 

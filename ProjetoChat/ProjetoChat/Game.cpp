@@ -2,6 +2,10 @@
 
 void Game::inicializar()
 {
+	jAltura = 600;
+	jLargura = 800;
+	jTitulo = "JogoRedes";
+
 	std::cout << "Digite (s) pra Servidor e (c) pra Cliente" << std::endl;
 	std::cin >> connectionType;
 	if (connectionType == 's') {
@@ -20,6 +24,11 @@ void Game::inicializar()
 	socket.receive(buffer, sizeof(buffer), received);
 	std::cout << buffer << std::endl;
 	done = false;
+
+	janela.criarJanela(jLargura, jAltura, jTitulo);
+	janela.setFPS(30);
+
+	//sprite.carregarSprite("/Sprites/teste.png", 10, 10, 32, 32);
 }
 
 void Game::atualizar()
@@ -27,26 +36,44 @@ void Game::atualizar()
 	
 	while (!done)
 	{
-		if (mode == 's') {
-			std::getline(std::cin, textAcao);
-			socket.send(textAcao.c_str(), text.length() + 1);
+		if (janela.aJanelaEstaAberta() == true) {
+			//janela.setFPS(30);
+			//std::cout << "Janela aberta com sucesso!\n";
 
-			mode = 'r';
-		}
-		else if (mode == 'r') {
-			socket.receive(buffer, sizeof(buffer), received);
-			if (received > 0) {
-				gameRun();
+			//jogo
 
-				mode = 's';
+			janela.AtualizarJanela();
+			//sprite.setPosition(400, 300);
+			//sprite.desenhar(janela);
+
+			if (mode == 's') {
+				std::getline(std::cin, textAcao);
+				socket.send(textAcao.c_str(), text.length() + 1);
+
+				mode = 'r';
+			}
+			else if (mode == 'r') {
+				socket.receive(buffer, sizeof(buffer), received);
+				if (received > 0) {
+					gameRun();
+
+					mode = 's';
+				}
 			}
 		}
+		else {
+			std::cout << "A janela nao foi criada corretamente!\n Recriando a janela";
+			janela.criarJanela(jLargura, jAltura, jTitulo);
+			janela.setFPS(30);
+		}
+		
 	}
-	system("pause");
+	//system("pause");
 }
 
 void Game::finalizar()
 {
+	janela.fecharJanela();
 }
 
 void Game::gameRun() {
