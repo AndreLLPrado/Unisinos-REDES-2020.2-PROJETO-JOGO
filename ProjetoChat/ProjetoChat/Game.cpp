@@ -1,5 +1,5 @@
 #include "Game.h"
-
+int vidaJ1 = 2500, vidaJ2 = 3000;
 void Game::inicializar()
 {
 	jAltura = 600;
@@ -49,13 +49,23 @@ void Game::atualizar()
 			if (mode == 's') {
 				std::getline(std::cin, textAcao);
 				socket.send(textAcao.c_str(), text.length() + 1);
+				gameRun();
+				if (connectionType == 's') {
+					std::cout << "Vida: " << vidaJ2 << std::endl;
+				}
+				else if (connectionType == 'c') {
+					std::cout << "Vida: " << vidaJ1 << std::endl;
+				}
 
+				/*std::cout << "Vida Jogador1: " << vidaJ1 << std::endl;
+				std::cout << "Vida Jogador2: " << vidaJ2 << std::endl;*/
 				mode = 'r';
 			}
 			else if (mode == 'r') {
 				socket.receive(buffer, sizeof(buffer), received);
 				if (received > 0) {
-					gameRun();
+					/*std::cout << "Vida Jogador1: " << vidaJ1 << std::endl;
+					std::cout << "Vida Jogador2: " << vidaJ2 << std::endl;*/
 
 					mode = 's';
 				}
@@ -77,9 +87,9 @@ void Game::finalizar()
 }
 
 void Game::gameRun() {
-	int vidaJ1 = 2500, vidaJ2 = 3000;
+	
 	if (connectionType == 's') {
-		std::cout << "Vida: " << vidaJ1 << std::endl;
+		//std::cout << "Vida: " << vidaJ2 << std::endl;
 		// std::cin >> textAcao;
 		if (textAcao == "a") {
 			vidaJ2 -= 100;
@@ -89,7 +99,7 @@ void Game::gameRun() {
 		}
 	}
 	else if (connectionType == 'c') {
-		std::cout << "Vida: " << vidaJ2 << std::endl;
+		//std::cout << "Vida: " << vidaJ1 << std::endl;
 		//std::cin >> textAcao;
 		if (textAcao == "a") {
 			vidaJ1 -= 100;

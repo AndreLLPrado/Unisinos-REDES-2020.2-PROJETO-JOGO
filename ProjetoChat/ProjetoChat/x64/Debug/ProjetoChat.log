@@ -1,8 +1,2 @@
 ﻿  Game.cpp
-  Janela.cpp
-  Sprite.cpp
-C:\Users\andre\Desktop\Unisinos\2020.2\Redes\Projeto GB\remote\ProjetoChat\ProjetoChat\Sprite.cpp(21,27): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-C:\Users\andre\Desktop\Unisinos\2020.2\Redes\Projeto GB\remote\ProjetoChat\ProjetoChat\Sprite.cpp(21,21): warning C4244: 'argumento': conversão de 'int' para 'float', possível perda de dados
-  Gerando Código...
-  Origem.cpp
-  ProjetoChat.vcxproj -> C:\Users\andre\Desktop\Unisinos\2020.2\Redes\Projeto GB\remote\ProjetoChat\x64\Debug\ProjetoChat.exe
+  ProjetoChat.vcxproj -> C:\Users\Sr.Tech\Documents\GitHub\Unisinos-REDES-2020.2-PROJETO-JOGO\ProjetoChat\x64\Debug\ProjetoChat.exe
