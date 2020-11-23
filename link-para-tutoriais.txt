@@ -1,8 +1,0 @@
-Tutorial das janelas:
-https://www.sfml-dev.org/tutorials/2.5/graphics-draw.php
-
-Tutorial das sprites:
-https://www.sfml-dev.org/tutorials/2.5/graphics-sprite.php
-
-SFML Documentacao:
-https://www.sfml-dev.org/documentation/2.5.1/classsf_1_1Window.php
